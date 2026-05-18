@@ -11,7 +11,7 @@
     /* Custom scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #1f2937; }
-    ::-webkit-scrollbar-thumb { background: #f97316; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { background: #FAA808; border-radius: 3px; }
 
     /* Animated gradient header */
     .header-gradient {
@@ -26,12 +26,12 @@
 
     /* Orange accent glow */
     .btn-primary {
-      background: linear-gradient(135deg, #f97316, #ea580c);
+      background: linear-gradient(135deg, #FAA808, #e09200);
       transition: all 0.2s ease;
     }
     .btn-primary:hover {
-      background: linear-gradient(135deg, #fb923c, #f97316);
-      box-shadow: 0 0 20px rgba(249,115,22,0.4);
+      background: linear-gradient(135deg, #fbb830, #FAA808);
+      box-shadow: 0 0 20px rgba(250,168,8,0.4);
       transform: translateY(-1px);
     }
     .btn-primary:active { transform: translateY(0); }
@@ -45,8 +45,8 @@
     }
     .inp:focus {
       outline: none;
-      border-color: #f97316;
-      box-shadow: 0 0 0 3px rgba(249,115,22,0.15);
+      border-color: #FAA808;
+      box-shadow: 0 0 0 3px rgba(250,168,8,0.15);
     }
     .inp::placeholder { color: #6b7280; }
 
@@ -106,8 +106,8 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .check-card:hover { border-color: #f97316; background: rgba(249,115,22,0.05); }
-    .check-card.selected { border-color: #f97316; background: rgba(249,115,22,0.1); }
+    .check-card:hover { border-color: #FAA808; background: rgba(250,168,8,0.05); }
+    .check-card.selected { border-color: #FAA808; background: rgba(250,168,8,0.1); }
 
     /* Radio pill */
     .radio-pill {
@@ -117,8 +117,8 @@
       transition: all 0.2s;
       user-select: none;
     }
-    .radio-pill:hover { border-color: #f97316; }
-    .radio-pill.selected { border-color: #f97316; background: rgba(249,115,22,0.15); color: #fb923c; }
+    .radio-pill:hover { border-color: #FAA808; }
+    .radio-pill.selected { border-color: #FAA808; background: rgba(250,168,8,0.15); color: #fbb830; }
   </style>
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen font-sans">
@@ -127,16 +127,16 @@
 <header class="header-gradient border-b border-gray-800 sticky top-0 z-50">
   <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-lg bg-orange-500 flex items-center justify-center text-white font-black text-lg leading-none">R</div>
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center text-white font-black text-lg leading-none" style="background:#FAA808">R</div>
       <div>
         <p class="text-xs text-gray-400 leading-none">Kalkulator</p>
         <p class="text-sm font-bold text-white leading-tight">Wycena Remontu</p>
       </div>
     </div>
-    <div class="text-right">
-      <p class="text-xs text-gray-400">Powiat Przemyski</p>
-      <p class="text-xs text-orange-400 font-semibold">bezpłatna wstępna wycena</p>
-    </div>
+    <a href="index.html" class="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Strona główna
+    </a>
   </div>
 </header>
 
@@ -144,15 +144,15 @@
 <div class="max-w-3xl mx-auto px-4 pt-6 pb-2">
   <div class="flex items-center justify-between mb-2">
     <span class="text-xs text-gray-400">Krok <span id="currentStepLabel">1</span> z 6</span>
-    <span class="text-xs text-orange-400 font-semibold" id="stepNameLabel">Lokalizacja i dane</span>
+    <span class="text-xs font-semibold" id="stepNameLabel" style="color:#FAA808">Lokalizacja i dane</span>
   </div>
   <div class="w-full bg-gray-800 rounded-full h-2">
-    <div id="progressBar" class="progress-bar bg-orange-500 h-2 rounded-full" style="width: 16.66%"></div>
+    <div id="progressBar" class="progress-bar h-2 rounded-full" style="width: 16.66%;background:#FAA808"></div>
   </div>
   <!-- Step dots -->
   <div class="flex justify-between mt-2">
     <div id="dot1" class="flex flex-col items-center">
-      <div class="w-3 h-3 rounded-full bg-orange-500"></div>
+      <div class="w-3 h-3 rounded-full" style="background:#FAA808"></div>
       <span class="text-[10px] text-gray-500 mt-1 hidden sm:block">Lokalizacja</span>
     </div>
     <div id="dot2" class="flex flex-col items-center">
@@ -184,7 +184,7 @@
   <!-- ───────────── KROK 1: LOKALIZACJA ───────────── -->
   <section id="step1" class="step-card rounded-2xl p-6 fade-in">
     <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-      <span class="w-7 h-7 rounded-full bg-orange-500 text-white text-sm flex items-center justify-center font-black">1</span>
+      <span class="w-7 h-7 rounded-full text-white text-sm flex items-center justify-center font-black" style="background:#FAA808">1</span>
       Lokalizacja i dane podstawowe
     </h2>
     <p class="text-sm text-gray-400 mb-6">Powiedz nam gdzie i co planujesz remontować.</p>
@@ -192,7 +192,7 @@
     <!-- Miejscowość -->
     <div class="mb-5">
       <label class="block text-sm font-semibold text-gray-300 mb-2">
-        Miejscowość / gmina <span class="text-orange-500">*</span>
+        Miejscowość / gmina <span style="color:#FAA808">*</span>
       </label>
       <select id="lokalizacja" class="inp w-full rounded-xl px-4 py-3 text-sm">
         <option value="">-- Wybierz miejscowość --</option>
@@ -225,12 +225,12 @@
     <!-- Stan inwestycji -->
     <div class="mb-5">
       <label class="block text-sm font-semibold text-gray-300 mb-3">
-        Stan inwestycji <span class="text-orange-500">*</span>
+        Stan inwestycji <span style="color:#FAA808">*</span>
       </label>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div class="radio-pill rounded-xl p-4 flex items-start gap-3" data-group="stan" data-val="deweloperski" onclick="selectRadio(this)">
           <div class="w-5 h-5 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0 mt-0.5 radio-dot">
-            <div class="w-2.5 h-2.5 rounded-full bg-orange-500 hidden inner-dot"></div>
+            <div class="w-2.5 h-2.5 rounded-full hidden inner-dot" style="background:#FAA808"></div>
           </div>
           <div>
             <p class="text-sm font-semibold text-white">Stan deweloperski / surowy</p>
@@ -239,7 +239,7 @@
         </div>
         <div class="radio-pill rounded-xl p-4 flex items-start gap-3" data-group="stan" data-val="wtorny" onclick="selectRadio(this)">
           <div class="w-5 h-5 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0 mt-0.5 radio-dot">
-            <div class="w-2.5 h-2.5 rounded-full bg-orange-500 hidden inner-dot"></div>
+            <div class="w-2.5 h-2.5 rounded-full hidden inner-dot" style="background:#FAA808"></div>
           </div>
           <div>
             <p class="text-sm font-semibold text-white">Rynek wtórny (remont)</p>
@@ -267,7 +267,7 @@
   <!-- ───────────── KROK 2: DEMONTAŻ ───────────── -->
   <section id="step2" class="hidden step-card rounded-2xl p-6">
     <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-      <span class="w-7 h-7 rounded-full bg-orange-500 text-white text-sm flex items-center justify-center font-black">2</span>
+      <span class="w-7 h-7 rounded-full text-white text-sm flex items-center justify-center font-black" style="background:#FAA808">2</span>
       Prace demontażowe i przygotowawcze
     </h2>
     <p class="text-sm text-gray-400 mb-2">Wpisz <strong class="text-gray-200">0</strong> jeśli dana pozycja Cię nie dotyczy.</p>
@@ -335,7 +335,7 @@
   <!-- ───────────── KROK 3: ŁAZIENKA / FLIZOWANIE ───────────── -->
   <section id="step3" class="hidden step-card rounded-2xl p-6">
     <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-      <span class="w-7 h-7 rounded-full bg-orange-500 text-white text-sm flex items-center justify-center font-black">3</span>
+      <span class="w-7 h-7 rounded-full text-white text-sm flex items-center justify-center font-black" style="background:#FAA808">3</span>
       Łazienka i prace płytkarskie
     </h2>
     <p class="text-sm text-gray-400 mb-6">Wpisz <strong class="text-gray-200">0</strong> jeśli dana pozycja Cię nie dotyczy.</p>
@@ -361,7 +361,7 @@
       <!-- Format płytek -->
       <div>
         <label class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
-          Format płytek <span class="text-orange-500">*</span>
+          Format płytek <span style="color:#FAA808">*</span>
           <span class="tooltip text-gray-600 ml-1" data-tip="Format wpływa na stawkę robocizny">ⓘ</span>
         </label>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -404,12 +404,12 @@
       <!-- Rodzaj fugi -->
       <div>
         <label class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
-          Rodzaj fugi <span class="text-orange-500">*</span>
+          Rodzaj fugi <span style="color:#FAA808">*</span>
         </label>
         <div class="grid grid-cols-2 gap-3">
           <div class="radio-pill rounded-xl p-3 flex items-center gap-3" data-group="fuga" data-val="cementowa" onclick="selectRadio(this)">
             <div class="w-4 h-4 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0 radio-dot">
-              <div class="w-2 h-2 rounded-full bg-orange-500 hidden inner-dot"></div>
+              <div class="w-2 h-2 rounded-full hidden inner-dot" style="background:#FAA808"></div>
             </div>
             <div>
               <p class="text-sm font-semibold text-white">Cementowa</p>
@@ -418,13 +418,13 @@
           </div>
           <div class="radio-pill rounded-xl p-3 flex items-center gap-3" data-group="fuga" data-val="epoksydowa" onclick="selectRadio(this)">
             <div class="w-4 h-4 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0 radio-dot">
-              <div class="w-2 h-2 rounded-full bg-orange-500 hidden inner-dot"></div>
+              <div class="w-2 h-2 rounded-full hidden inner-dot" style="background:#FAA808"></div>
             </div>
             <div>
               <p class="text-sm font-semibold text-white">Epoksydowa</p>
               <p class="text-xs text-gray-400 flex items-center gap-1">
                 Droższa usługa
-                <span class="bg-orange-500/20 text-orange-400 text-[10px] px-1.5 py-0.5 rounded">+premium</span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded" style="background:rgba(250,168,8,0.2);color:#FAA808">+premium</span>
               </p>
             </div>
           </div>
@@ -467,7 +467,7 @@
   <!-- ───────────── KROK 4: ŚCIANY, SUFITY ───────────── -->
   <section id="step4" class="hidden step-card rounded-2xl p-6">
     <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-      <span class="w-7 h-7 rounded-full bg-orange-500 text-white text-sm flex items-center justify-center font-black">4</span>
+      <span class="w-7 h-7 rounded-full text-white text-sm flex items-center justify-center font-black" style="background:#FAA808">4</span>
       Ściany, sufity i wykończenie wnętrz
     </h2>
     <p class="text-sm text-gray-400 mb-6">Wpisz <strong class="text-gray-200">0</strong> jeśli dana pozycja Cię nie dotyczy.</p>
@@ -502,7 +502,7 @@
               Standardowe
             </div>
             <div class="radio-pill rounded-xl p-3 flex-1 text-center text-xs" data-group="gladzie_typ" data-val="bezpylowe" onclick="selectRadio(this)">
-              Bezpyłowe <span class="text-orange-400">+</span>
+              Bezpyłowe <span style="color:#FAA808">+</span>
             </div>
           </div>
         </div>
@@ -537,7 +537,7 @@
   <!-- ───────────── KROK 5: INSTALACJE ───────────── -->
   <section id="step5" class="hidden step-card rounded-2xl p-6">
     <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-      <span class="w-7 h-7 rounded-full bg-orange-500 text-white text-sm flex items-center justify-center font-black">5</span>
+      <span class="w-7 h-7 rounded-full text-white text-sm flex items-center justify-center font-black" style="background:#FAA808">5</span>
       Instalacje – drobne przeróbki
     </h2>
     <p class="text-sm text-gray-400 mb-6">Podaj liczbę punktów do przeróbki. Wpisz <strong class="text-gray-200">0</strong> jeśli dana pozycja Cię nie dotyczy.</p>
@@ -602,14 +602,14 @@
   <!-- ───────────── KROK 6: PODSUMOWANIE I KONTAKT ───────────── -->
   <section id="step6" class="hidden step-card rounded-2xl p-6">
     <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-      <span class="w-7 h-7 rounded-full bg-orange-500 text-white text-sm flex items-center justify-center font-black">6</span>
+      <span class="w-7 h-7 rounded-full text-white text-sm flex items-center justify-center font-black" style="background:#FAA808">6</span>
       Szacunkowa wycena i kontakt
     </h2>
     <p class="text-sm text-gray-400 mb-6">Oto podsumowanie Twojego zapytania.</p>
 
     <!-- WYCENA GŁÓWNA -->
-    <div class="bg-gradient-to-br from-orange-500/10 to-orange-600/5 border border-orange-500/30 rounded-2xl p-6 mb-6 text-center">
-      <p class="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-2">Szacowany koszt robocizny</p>
+    <div class="rounded-2xl p-6 mb-6 text-center" style="background:linear-gradient(to bottom right, rgba(250,168,8,0.1), rgba(250,168,8,0.03));border:1px solid rgba(250,168,8,0.3)">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color:#FAA808">Szacowany koszt robocizny</p>
       <p class="text-4xl sm:text-5xl font-black text-white mb-1" id="wycenaGlowna">— zł</p>
       <p class="text-sm text-gray-400 mb-4">
         <span id="wycenaMin">—</span> zł &nbsp;–&nbsp; <span id="wycenaMax">—</span> zł
@@ -636,20 +636,20 @@
     <!-- Formularz kontaktowy -->
     <div class="border-t border-gray-800 pt-6">
       <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-        <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <svg class="w-5 h-5" style="color:#FAA808" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         Wyślij zapytanie
       </h3>
       <div class="space-y-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">
-              Imię i nazwisko <span class="text-orange-500">*</span>
+              Imię i nazwisko <span style="color:#FAA808">*</span>
             </label>
             <input type="text" id="kontaktImie" class="inp w-full rounded-xl px-4 py-3 text-sm" placeholder="Jan Kowalski" maxlength="60" />
           </div>
           <div>
             <label class="block text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">
-              Numer telefonu <span class="text-orange-500">*</span>
+              Numer telefonu <span style="color:#FAA808">*</span>
             </label>
             <input type="tel" id="kontaktTel" class="inp w-full rounded-xl px-4 py-3 text-sm" placeholder="+48 123 456 789" />
           </div>
@@ -662,7 +662,7 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
-            Preferowany termin realizacji <span class="text-orange-500">*</span>
+            Preferowany termin realizacji <span style="color:#FAA808">*</span>
           </label>
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
             <div class="radio-pill rounded-xl p-2 text-center text-xs" data-group="termin" data-val="jak_najszybciej" onclick="selectRadio(this)">🔥 Jak najszybciej</div>
@@ -676,9 +676,9 @@
 
         <!-- RODO -->
         <div class="flex items-start gap-3 mt-2">
-          <input type="checkbox" id="rodo" class="mt-1 accent-orange-500 w-4 h-4 cursor-pointer flex-shrink-0" />
+          <input type="checkbox" id="rodo" class="mt-1 accent-[#FAA808] w-4 h-4 cursor-pointer flex-shrink-0" />
           <label for="rodo" class="text-xs text-gray-400 cursor-pointer leading-relaxed">
-            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu przygotowania wyceny i kontaktu zwrotnego. Dane nie będą udostępniane podmiotom trzecim. <span class="text-orange-500">*</span>
+            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu przygotowania wyceny i kontaktu zwrotnego. Dane nie będą udostępniane podmiotom trzecim. <span style="color:#FAA808">*</span>
           </label>
         </div>
       </div>
@@ -705,15 +705,15 @@
     <div class="bg-gray-900 rounded-xl p-4 text-left mb-6 space-y-2">
       <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Co dalej?</p>
       <div class="flex items-center gap-3 text-sm text-gray-300">
-        <span class="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 text-xs flex items-center justify-center font-bold flex-shrink-0">1</span>
+        <span class="w-6 h-6 rounded-full text-xs flex items-center justify-center font-bold flex-shrink-0" style="background:rgba(250,168,8,0.2);color:#FAA808">1</span>
         Sprawdzimy Twoje zapytanie i skontaktujemy się telefonicznie
       </div>
       <div class="flex items-center gap-3 text-sm text-gray-300">
-        <span class="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 text-xs flex items-center justify-center font-bold flex-shrink-0">2</span>
+        <span class="w-6 h-6 rounded-full text-xs flex items-center justify-center font-bold flex-shrink-0" style="background:rgba(250,168,8,0.2);color:#FAA808">2</span>
         Umówimy bezpłatne oględziny i dokładne pomiary
       </div>
       <div class="flex items-center gap-3 text-sm text-gray-300">
-        <span class="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 text-xs flex items-center justify-center font-bold flex-shrink-0">3</span>
+        <span class="w-6 h-6 rounded-full text-xs flex items-center justify-center font-bold flex-shrink-0" style="background:rgba(250,168,8,0.2);color:#FAA808">3</span>
         Przygotujemy szczegółowy kosztorys i podpiszemy umowę
       </div>
     </div>
@@ -726,7 +726,7 @@
 
 <!-- Footer -->
 <footer class="max-w-3xl mx-auto px-4 py-8 text-center">
-  <p class="text-xs text-gray-600">© 2024 Usługi Remontowo-Wykończeniowe • Powiat Przemyski</p>
+  <p class="text-xs text-gray-600">© 2026 Usługi Remontowo-Wykończeniowe • Powiat Przemyski</p>
   <p class="text-xs text-gray-700 mt-1">Kalkulator ma charakter szacunkowy. Stawki rynkowe dla województwa podkarpackiego.</p>
 </footer>
 
@@ -835,13 +835,13 @@ function selectRadio(el) {
   // Odznacz wszystkie w grupie
   document.querySelectorAll(`[data-group="${group}"]`).forEach(e => {
     e.classList.remove('selected');
-    e.querySelectorAll('.radio-dot').forEach(d => d.classList.remove('border-orange-500'));
+    e.querySelectorAll('.radio-dot').forEach(d => d.style.borderColor = '');
     e.querySelectorAll('.inner-dot').forEach(d => d.classList.add('hidden'));
   });
 
   // Zaznacz wybrany
   el.classList.add('selected');
-  el.querySelectorAll('.radio-dot').forEach(d => d.classList.add('border-orange-500'));
+  el.querySelectorAll('.radio-dot').forEach(d => d.style.borderColor = '#FAA808');
   el.querySelectorAll('.inner-dot').forEach(d => d.classList.remove('hidden'));
 
   // Zapisz wartość do hidden inputa
@@ -891,9 +891,9 @@ function updateProgress(step) {
   for (let i = 1; i <= TOTAL_STEPS; i++) {
     const dot = document.querySelector(`#dot${i} div`);
     if (dot) {
-      if (i < step)       { dot.className = 'w-3 h-3 rounded-full bg-green-500'; }
-      else if (i === step){ dot.className = 'w-3 h-3 rounded-full bg-orange-500'; }
-      else                { dot.className = 'w-3 h-3 rounded-full bg-gray-700'; }
+      if (i < step)       { dot.style.background = '#22c55e'; dot.className = 'w-3 h-3 rounded-full'; }
+      else if (i === step){ dot.style.background = '#FAA808'; dot.className = 'w-3 h-3 rounded-full'; }
+      else                { dot.style.background = ''; dot.className = 'w-3 h-3 rounded-full bg-gray-700'; }
     }
   }
 }
@@ -1221,7 +1221,7 @@ function renderSummaryList(items) {
 
   let html = '';
   Object.entries(groups).forEach(([sekcja, list]) => {
-    const color = sectionColors[sekcja] || 'text-orange-400';
+    const color = sectionColors[sekcja] || 'text-[#FAA808]';
     html += `<div class="border-b border-gray-800 last:border-0">
       <div class="px-4 py-2 bg-gray-900/80">
         <p class="text-xs font-bold uppercase tracking-wide ${color}">${sekcja}</p>
@@ -1244,9 +1244,9 @@ function renderSummaryList(items) {
 
   // Wiersz łączny
   const total = items.reduce((s, i) => s + i.total, 0);
-  html += `<div class="flex justify-between px-4 py-3 bg-orange-500/10 border-t border-orange-500/30">
+  html += `<div class="flex justify-between px-4 py-3 border-t" style="background:rgba(250,168,8,0.1);border-color:rgba(250,168,8,0.3)">
     <span class="text-sm font-bold text-white">Razem (baza)</span>
-    <span class="text-sm font-black text-orange-400">${formatPLN(total)} zł</span>
+    <span class="text-sm font-black" style="color:#FAA808">${formatPLN(total)} zł</span>
   </div>`;
 
   container.innerHTML = html;
@@ -1479,7 +1479,7 @@ function resetForm() {
   document.querySelectorAll('[data-group]').forEach(e => {
     e.classList.remove('selected');
     e.querySelectorAll('.inner-dot').forEach(d => d.classList.add('hidden'));
-    e.querySelectorAll('.radio-dot').forEach(d => d.classList.remove('border-orange-500'));
+    e.querySelectorAll('.radio-dot').forEach(d => d.style.borderColor = '');
   });
   document.querySelectorAll('.format-card').forEach(e => e.classList.remove('selected'));
   document.querySelectorAll('input[type="hidden"]').forEach(i => {
