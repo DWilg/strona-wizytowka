@@ -358,64 +358,19 @@
       <p class="text-gray-400 mt-3 max-w-xl mx-auto text-sm">Wybrane projekty z Powiatu Przemyskiego. Kliknij zdjęcie, aby powiększyć.</p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-2 mb-8 reveal">
-      <button onclick="filterGallery('all')"      class="gallery-filter active-filter px-4 py-1.5 rounded-full text-xs font-semibold border border-orange-500 text-orange-400 transition-colors" data-filter="all">Wszystkie</button>
-      <button onclick="filterGallery('lazienka')" class="gallery-filter px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-700 text-gray-400 hover:border-orange-500 hover:text-orange-400 transition-colors" data-filter="lazienka">Łazienki</button>
-      <button onclick="filterGallery('plytki')"   class="gallery-filter px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-700 text-gray-400 hover:border-orange-500 hover:text-orange-400 transition-colors" data-filter="plytki">Płytki</button>
-      <button onclick="filterGallery('wnetrze')"  class="gallery-filter px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-700 text-gray-400 hover:border-orange-500 hover:text-orange-400 transition-colors" data-filter="wnetrze">Wnętrza</button>
-    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
 
-    <!--
-      ► JAK DODAĆ WŁASNE ZDJĘCIA:
-        1. Utwórz folder "zdjecia" obok pliku index.html
-        2. Wrzuć swoje zdjęcia (np. lazienka1.jpg, kafelki2.jpg)
-        3. Zamień src="https://images.unsplash.com/..." na src="zdjecia/twoje-zdjecie.jpg"
-        4. Zmień też data-cat="lazienka/plytki/wnetrze" i tekst w onclick i alt
-    -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="lazienka" onclick="openLightbox('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=90','Łazienka – płytki heksagonalne')">
-        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt="Łazienka" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Łazienka</span></div>
+      <div class="gallery-item rounded-2xl relative h-72 md:h-96 reveal" data-cat="lazienka" onclick="openLightbox('assets/671917859_1467072068295731_2877771294827816197_n.jpg','Realizacja – łazienka')">
+        <img src="assets/671917859_1467072068295731_2877771294827816197_n.jpg" alt="Realizacja łazienka" loading="lazy"/>
+        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-semibold">Realizacja</span></div>
       </div>
 
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="lazienka" onclick="openLightbox('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=90','Nowoczesna łazienka')">
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" alt="Nowoczesna łazienka" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Łazienka</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="plytki" onclick="openLightbox('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=90','Płytki ścienne')">
-        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Płytki ścienne" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Płytki</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="wnetrze" onclick="openLightbox('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=90','Salon po remoncie')">
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Salon" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Wnętrze</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="plytki" onclick="openLightbox('https://images.unsplash.com/photo-1615873968403-89e068629265?w=1200&q=90','Podłoga – wielki format')">
-        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&q=80" alt="Podłoga" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Podłoga</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="lazienka" onclick="openLightbox('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1200&q=90','Łazienka – biały montaż')">
-        <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=600&q=80" alt="Biały montaż" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Łazienka</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="wnetrze" onclick="openLightbox('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=90','Sypialnia po wykończeniu')">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Sypialnia" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Sypialnia</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-48 md:h-64 reveal" data-cat="plytki" onclick="openLightbox('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90','Kuchnia – płytki cegiełki')">
-        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Kuchnia" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-3"><span class="text-white text-xs font-semibold">Kuchnia</span></div>
+      <div class="gallery-item rounded-2xl relative h-72 md:h-96 reveal" data-cat="lazienka" onclick="openLightbox('assets/670511716_2702099143523334_2585280358375966363_n.jpg','Realizacja – łazienka')">
+        <img src="assets/670511716_2702099143523334_2585280358375966363_n.jpg" alt="Realizacja łazienka" loading="lazy"/>
+        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-semibold">Realizacja</span></div>
       </div>
 
     </div>
-    <p class="text-center text-xs text-gray-600 mt-5">* Zdjęcia poglądowe. Własne realizacje dostępne na życzenie podczas oględzin.</p>
   </div>
 </section>
 
