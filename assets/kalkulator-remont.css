@@ -1,0 +1,111 @@
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1f2937; }
+    ::-webkit-scrollbar-thumb { background: #FAA808; border-radius: 3px; }
+
+    /* Animated gradient header */
+    .header-gradient {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #111827 100%);
+    }
+
+    /* Step card */
+    .step-card {
+      background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+      border: 1px solid #374151;
+    }
+
+    /* Orange accent glow */
+    .btn-primary {
+      background: linear-gradient(135deg, #FAA808, #e09200);
+      transition: all 0.2s ease;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #fbb830, #FAA808);
+      box-shadow: 0 0 20px rgba(250,168,8,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Input styles */
+    .inp {
+      background: #111827;
+      border: 1px solid #374151;
+      color: #f9fafb;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .inp:focus {
+      outline: none;
+      border-color: #FAA808;
+      box-shadow: 0 0 0 3px rgba(250,168,8,0.15);
+    }
+    .inp::placeholder { color: #6b7280; }
+
+    /* Pole z błędem – czerwona ramka + poświata */
+    .inp-error {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 3px rgba(239,68,68,0.18) !important;
+    }
+    /* Shake animation dla pola z błędem */
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%     { transform: translateX(-6px); }
+      40%     { transform: translateX(6px); }
+      60%     { transform: translateX(-4px); }
+      80%     { transform: translateX(4px); }
+    }
+    .shake { animation: shake 0.35s ease; }
+
+    /* Progress bar animation */
+    .progress-bar { transition: width 0.5s ease; }
+
+    /* Fade in animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.4s ease forwards; }
+
+    /* Section toggle */
+    .section-collapsed { display: none; }
+
+    /* Summary item */
+    .summary-row:nth-child(even) { background: rgba(255,255,255,0.03); }
+
+    /* Tooltip */
+    .tooltip { position: relative; cursor: help; }
+    .tooltip:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #374151;
+      color: #f9fafb;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 10;
+      border: 1px solid #4b5563;
+    }
+
+    /* Checkbox card */
+    .check-card {
+      border: 1px solid #374151;
+      background: #111827;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .check-card:hover { border-color: #FAA808; background: rgba(250,168,8,0.05); }
+    .check-card.selected { border-color: #FAA808; background: rgba(250,168,8,0.1); }
+
+    /* Radio pill */
+    .radio-pill {
+      border: 1px solid #374151;
+      background: #111827;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .radio-pill:hover { border-color: #FAA808; }
+    .radio-pill.selected { border-color: #FAA808; background: rgba(250,168,8,0.15); color: #fbb830; }
