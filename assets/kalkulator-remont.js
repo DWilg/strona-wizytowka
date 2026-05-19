@@ -212,14 +212,9 @@ const NUM_FIELDS = {
 function showErr(errId, msgs) {
   const el = document.getElementById(errId);
   if (!el) return;
-  el.textContent = '';
-  const values = Array.isArray(msgs) ? msgs : [msgs];
-  values.forEach(msg => {
-    const span = document.createElement('span');
-    span.className = 'block';
-    span.textContent = `⚠ ${msg}`;
-    el.appendChild(span);
-  });
+  el.innerHTML = Array.isArray(msgs)
+    ? msgs.map(m => `<span class="block">⚠ ${m}</span>`).join('')
+    : `<span>⚠ ${msgs}</span>`;
   el.classList.remove('hidden');
   setTimeout(() => el.classList.add('hidden'), 7000);
 }
@@ -488,75 +483,37 @@ function renderSummaryList(items) {
     groups[s].push(item);
   });
 
-  container.textContent = '';
+  let html = '';
   Object.entries(groups).forEach(([sekcja, list]) => {
     const color = sectionColors[sekcja] || 'text-[#FAA808]';
-    const sectionWrapper = document.createElement('div');
-    sectionWrapper.className = 'border-b border-gray-800 last:border-0';
-
-    const titleWrap = document.createElement('div');
-    titleWrap.className = 'px-4 py-2 bg-gray-900/80';
-    const title = document.createElement('p');
-    title.className = `text-xs font-bold uppercase tracking-wide ${color}`;
-    title.textContent = sekcja;
-    titleWrap.appendChild(title);
-    sectionWrapper.appendChild(titleWrap);
-
+    html += `<div class="border-b border-gray-800 last:border-0">
+      <div class="px-4 py-2 bg-gray-900/80">
+        <p class="text-xs font-bold uppercase tracking-wide ${color}">${sekcja}</p>
+      </div>`;
     list.forEach(item => {
-      const row = document.createElement('div');
-      row.className = 'summary-row flex items-center justify-between px-4 py-2.5 text-sm';
-
-      const left = document.createElement('div');
-      const label = document.createElement('span');
-      label.className = 'text-gray-200';
-      label.textContent = item.label;
-      const meta = document.createElement('span');
-      meta.className = 'text-gray-500 ml-2 text-xs';
-      meta.textContent = `${item.qty} ${item.unit} × ${formatPLN(item.cena)} zł`;
-      left.appendChild(label);
-      left.appendChild(meta);
-
-      const totalCell = document.createElement('span');
-      totalCell.className = 'font-semibold text-white whitespace-nowrap ml-4';
-      totalCell.textContent = `${formatPLN(item.total)} zł`;
-
-      row.appendChild(left);
-      row.appendChild(totalCell);
-      sectionWrapper.appendChild(row);
+      html += `<div class="summary-row flex items-center justify-between px-4 py-2.5 text-sm">
+        <div>
+          <span class="text-gray-200">${item.label}</span>
+          <span class="text-gray-500 ml-2 text-xs">${item.qty} ${item.unit} × ${formatPLN(item.cena)} zł</span>
+        </div>
+        <span class="font-semibold text-white whitespace-nowrap ml-4">${formatPLN(item.total)} zł</span>
+      </div>`;
     });
-
     const sekcjaSum = list.reduce((s, i) => s + i.total, 0);
-    const sumRow = document.createElement('div');
-    sumRow.className = 'flex justify-between px-4 py-2 bg-gray-900/40 border-t border-gray-800/50';
-    const sumLabel = document.createElement('span');
-    sumLabel.className = 'text-xs text-gray-500';
-    sumLabel.textContent = 'Suma sekcji';
-    const sumValue = document.createElement('span');
-    sumValue.className = 'text-xs font-bold text-gray-300';
-    sumValue.textContent = `${formatPLN(sekcjaSum)} zł`;
-    sumRow.appendChild(sumLabel);
-    sumRow.appendChild(sumValue);
-    sectionWrapper.appendChild(sumRow);
-
-    container.appendChild(sectionWrapper);
+    html += `<div class="flex justify-between px-4 py-2 bg-gray-900/40 border-t border-gray-800/50">
+      <span class="text-xs text-gray-500">Suma sekcji</span>
+      <span class="text-xs font-bold text-gray-300">${formatPLN(sekcjaSum)} zł</span>
+    </div></div>`;
   });
 
   // Wiersz łączny
   const total = items.reduce((s, i) => s + i.total, 0);
-  const totalRow = document.createElement('div');
-  totalRow.className = 'flex justify-between px-4 py-3 border-t';
-  totalRow.style.background = 'rgba(250,168,8,0.1)';
-  totalRow.style.borderColor = 'rgba(250,168,8,0.3)';
-  const totalLabel = document.createElement('span');
-  totalLabel.className = 'text-sm font-bold text-white';
-  totalLabel.textContent = 'Razem (baza)';
-  const totalValue = document.createElement('span');
-  totalValue.className = 'text-sm font-black';
-  totalValue.style.color = '#FAA808';
-  totalValue.textContent = `${formatPLN(total)} zł`;
-  totalRow.appendChild(totalLabel);
-  totalRow.appendChild(totalValue);
-  container.appendChild(totalRow);
+  html += `<div class="flex justify-between px-4 py-3 border-t" style="background:rgba(250,168,8,0.1);border-color:rgba(250,168,8,0.3)">
+    <span class="text-sm font-bold text-white">Razem (baza)</span>
+    <span class="text-sm font-black" style="color:#FAA808">${formatPLN(total)} zł</span>
+  </div>`;
+
+  container.innerHTML = html;
 }
 
 // ─────────────────────────────────────────────────────
