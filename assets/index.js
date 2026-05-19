@@ -6,7 +6,7 @@ const SITE_PUBLIC_KEY  = 'N3tcahgAQt4LRFqwF';
 const SITE_SERVICE_ID  = 'service_dqgkcqk';
 // ► Nowy szablon dla "Oddzwoń" – utwórz w EmailJS jako template_kontakt
 //   Zmienne: {{client_name}}, {{client_phone}}, {{temat}}, {{message}}, {{data}}
-const SITE_TPL_CALLBACK = 'template_kontakt';
+const SITE_TPL_CALLBACK = 'template_p344dtf';
 const SITE_OWNER_EMAIL  = 'wilguckidariusz6@gmail.com';
 
 emailjs.init({ publicKey: SITE_PUBLIC_KEY });
