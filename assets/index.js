@@ -2,8 +2,8 @@
 
 // ── EMAILJS ──────────────────────────────────────────
 // ► Skopiuj te same klucze co w kalkulator-remont.html
-const SITE_PUBLIC_KEY  = 'TWOJ_PUBLIC_KEY';
-const SITE_SERVICE_ID  = 'TWOJ_SERVICE_ID';
+const SITE_PUBLIC_KEY  = 'N3tcahgAQt4LRFqwF';
+const SITE_SERVICE_ID  = 'service_dqgkcqk';
 // ► Nowy szablon dla "Oddzwoń" – utwórz w EmailJS jako template_kontakt
 //   Zmienne: {{client_name}}, {{client_phone}}, {{temat}}, {{message}}, {{data}}
 const SITE_TPL_CALLBACK = 'template_kontakt';
