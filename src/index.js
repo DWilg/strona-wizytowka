@@ -1,5 +1,5 @@
 const TELEGRAM_TOKEN  = "8947475703:AAG3PimrKm9ORXHJpukpYNhiNMKjUHmhgm0";
-const ALLOWED_CHAT_ID = 0;
+const ALLOWED_CHAT_ID = 8237885359;
 const R2_PUBLIC_URL   = "https://galeria-worker.dawidwilgucki9.workers.dev/images";
 const MAX_PHOTOS = 8;
 const KV_KEY     = "photos";
