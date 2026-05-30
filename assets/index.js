@@ -43,6 +43,7 @@ const revObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+window.observeReveal = el => revObs.observe(el);
 
 // ── COUNTER ANIMATION ────────────────────────────────
 const cntObs = new IntersectionObserver(entries => {
