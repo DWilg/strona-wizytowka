@@ -54,8 +54,21 @@ async function handleUpdate(update, env) {
     return;
   }
 
+  if (msg.text) {
+    const cmd = msg.text.trim().toLowerCase();
+    if (cmd === "/clear-gallery") {
+      const photos = await getPhotos(env);
+      await Promise.all(photos.map((p) => env.R2_BUCKET.delete(p.url.split("/").pop())));
+      await savePhotos(env, []);
+      await tgSend(chatId, `🗑️ Galeria wyczyszczona (usunięto ${photos.length} zdjęć). Możesz teraz wysyłać nowe.`);
+    } else {
+      await tgSend(chatId, "Wyślij zdjęcie z podpisem (caption), żeby dodać je do galerii.\nDostępne komendy:\n/clear-gallery — usuń wszystkie zdjęcia");
+    }
+    return;
+  }
+
   if (!msg.photo || !msg.caption) {
-    await tgSend(chatId, "Wyślij zdjęcie z podpisem (caption), żeby dodać je do galerii.");
+    await tgSend(chatId, "Wyślij zdjęcie z podpisem (caption), żeby dodać je do galerii.\nDostępne komendy:\n/clear-gallery — usuń wszystkie zdjęcia");
     return;
   }
 
