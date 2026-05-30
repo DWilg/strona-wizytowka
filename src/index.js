@@ -1,13 +1,13 @@
-const TELEGRAM_TOKEN  = "8947475703:AAG3PimrKm9ORXHJpukpYNhiNMKjUHmhgm0";
+const TELEGRAM_TOKEN = "8947475703:AAG3PimrKm9ORXHJpukpYNhiNMKjUHmhgm0";
 const ALLOWED_CHAT_ID = 8237885359;
-const R2_PUBLIC_URL   = "https://galeria-worker.dawidwilgucki9.workers.dev/images";
+const R2_PUBLIC_URL = "https://pub-f9728e5f53a747a6b0c47474cfb0bbdd.r2.dev";
 const MAX_PHOTOS = 8;
-const KV_KEY     = "photos";
-const TGAPI      = `https://api.telegram.org/bot${TELEGRAM_TOKEN}`;
+const KV_KEY = "photos";
+const TGAPI = `https://api.telegram.org/bot${TELEGRAM_TOKEN}`;
 
 export default {
   async fetch(request, env) {
-    const url    = new URL(request.url);
+    const url = new URL(request.url);
     const method = request.method;
 
     if (method === "GET" && url.pathname === "/api/galeria") {
@@ -16,7 +16,7 @@ export default {
     }
 
     if (method === "GET" && url.pathname.startsWith("/images/")) {
-      const key    = url.pathname.replace("/images/", "");
+      const key = url.pathname.replace("/images/", "");
       const object = await env.R2_BUCKET.get(key);
       if (!object) return new Response("Not found", { status: 404 });
       const headers = new Headers();
@@ -59,13 +59,13 @@ async function handleUpdate(update, env) {
     return;
   }
 
-  const photo     = msg.photo[msg.photo.length - 1];
-  const fileId    = photo.file_id;
-  const opis      = msg.caption.trim();
+  const photo = msg.photo[msg.photo.length - 1];
+  const fileId = photo.file_id;
+  const opis = msg.caption.trim();
   const timestamp = Date.now();
-  const filename  = `${timestamp}.jpg`;
+  const filename = `${timestamp}.jpg`;
 
-  const fileRes  = await fetch(`${TGAPI}/getFile?file_id=${fileId}`);
+  const fileRes = await fetch(`${TGAPI}/getFile?file_id=${fileId}`);
   const fileData = await fileRes.json();
   if (!fileData.ok) {
     await tgSend(chatId, "Błąd: nie udało się pobrać pliku z Telegrama.");
@@ -96,16 +96,16 @@ async function handleUpdate(update, env) {
 
 async function tgSend(chatId, text) {
   await fetch(`${TGAPI}/sendMessage`, {
-    method:  "POST",
+    method: "POST",
     headers: { "Content-Type": "application/json" },
-    body:    JSON.stringify({ chat_id: chatId, text }),
+    body: JSON.stringify({ chat_id: chatId, text }),
   });
 }
 
 function jsonResponse(data) {
   return new Response(JSON.stringify(data), {
     headers: {
-      "Content-Type":                "application/json",
+      "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     },
   });
