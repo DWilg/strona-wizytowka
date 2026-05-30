@@ -1,0 +1,12 @@
+name            = "galeria-worker"
+main            = "src/index.js"
+compatibility_date = "2025-01-01"
+account_id      = "24cda59b4dc767a8540964c5df9dfc2b"
+
+[[kv_namespaces]]
+binding     = "GALERIA_KV"
+id          = "01f2aee671ac4d8d85dde278d5875036"
+
+[[r2_buckets]]
+binding     = "R2_BUCKET"
+bucket_name = "galeria-zdjec"

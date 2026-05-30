@@ -277,29 +277,46 @@
       <p class="text-gray-400 mt-3 max-w-xl mx-auto text-sm">Wybrane projekty z Powiatu Przemyskiego. Kliknij zdjęcie, aby powiększyć.</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
-
-      <div class="gallery-item rounded-2xl relative h-72 md:h-96 reveal" data-cat="lazienka" onclick="openLightbox('assets/671917859_1467072068295731_2877771294827816197_n.jpg','Realizacja – łazienka')">
-        <img src="assets/671917859_1467072068295731_2877771294827816197_n.jpg" alt="Realizacja łazienka" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-semibold">Realizacja</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-72 md:h-96 reveal" data-cat="lazienka" onclick="openLightbox('assets/670511716_2702099143523334_2585280358375966363_n.jpg','Realizacja – łazienka')">
-        <img src="assets/670511716_2702099143523334_2585280358375966363_n.jpg" alt="Realizacja łazienka" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-semibold">Realizacja</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-72 md:h-96 reveal" data-cat="remont" onclick="openLightbox('assets/IMG_20210131_124028.jpg','Realizacja – remont')">
-        <img src="assets/IMG_20210131_124028.jpg" alt="Realizacja remont" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-semibold">Realizacja</span></div>
-      </div>
-
-      <div class="gallery-item rounded-2xl relative h-72 md:h-96 reveal" data-cat="remont" onclick="openLightbox('assets/IMG_20200118_124830.jpg','Realizacja – remont')">
-        <img src="assets/IMG_20200118_124830.jpg" alt="Realizacja remont" loading="lazy"/>
-        <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-semibold">Realizacja</span></div>
-      </div>
-
+    <div id="galeria-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+      <div class="gallery-skeleton rounded-2xl h-72 md:h-96 animate-pulse bg-gray-800"></div>
+      <div class="gallery-skeleton rounded-2xl h-72 md:h-96 animate-pulse bg-gray-800"></div>
+      <div class="gallery-skeleton rounded-2xl h-72 md:h-96 animate-pulse bg-gray-800"></div>
+      <div class="gallery-skeleton rounded-2xl h-72 md:h-96 animate-pulse bg-gray-800"></div>
     </div>
+    <script>
+    (function () {
+      const WORKER_URL = "https://galeria-worker.dawidwilgucki9.workers.dev";
+      const grid = document.getElementById("galeria-grid");
+      fetch(WORKER_URL + "/api/galeria")
+        .then(function (r) { return r.json(); })
+        .then(function (photos) {
+          grid.innerHTML = "";
+          if (!photos || photos.length === 0) {
+            grid.innerHTML = '<p class="col-span-2 text-center text-gray-500 text-sm py-12">Brak zdjęć w galerii.</p>';
+            return;
+          }
+          photos.forEach(function (photo) {
+            var opis = photo.opis || "Realizacja";
+            var url  = photo.url  || "";
+            var item = document.createElement("div");
+            item.className = "gallery-item rounded-2xl relative h-72 md:h-96 reveal";
+            item.onclick = function () { openLightbox(url, opis); };
+            var img = document.createElement("img");
+            img.src = url; img.alt = opis; img.loading = "lazy";
+            var overlay = document.createElement("div");
+            overlay.className = "gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4";
+            overlay.innerHTML = '<span class="text-white text-sm font-semibold">' + opis + '</span>';
+            item.appendChild(img);
+            item.appendChild(overlay);
+            grid.appendChild(item);
+          });
+          if (typeof revealAll === "function") revealAll();
+        })
+        .catch(function () {
+          grid.innerHTML = '<p class="col-span-2 text-center text-gray-500 text-sm py-12">Nie udało się załadować galerii.</p>';
+        });
+    })();
+    </script>
   </div>
 </section>
 
